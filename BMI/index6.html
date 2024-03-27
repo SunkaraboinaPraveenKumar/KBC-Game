@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link  rel="stylesheet" href="stylebmi.css">
+</head>
+<body>
+    <div class="cont">
+        <h1>BMI Calculator</h1>
+        <div class="form">
+            <label>Weight</label>
+            <div class="contin">
+                <input type="number" id="weightInKG" placeholder="Enter Your Weight in Kg">
+                <input type="number" id="weightInPounds" placeholder="Enter Your Weight in Pounds">
+                <select name="weight" id="weight">
+                    <option value="kg">KiloGrams(kg)</option>
+                    <option value="pound">Pounds</option>
+                </select>
+            </div>
+            <label>Height</label>
+            <div class="contin">
+                <input type="number" id="heightInMeters" placeholder="Enter your Height in Meters">
+                <input type="number" id="heightInCentimeters" placeholder="Enter your Height in Centimeters">
+                <input type="number" id="heightInFeets" placeholder="Height In Feets">
+                <input type="number" id="heightInInches" placeholder="Inches">
+                <select name="height" id="height">
+                    <option value="meter">Meters(m)</option>
+                    <option value="centimeter">Centimeters(cm)</option>
+                    <option value="feet">Feet(ft)</option>
+                </select>
+            </div>
+            <button onclick="calculate()">Calculate</button>
+        </div>
+        <div class="result">
+            <h2>Your BMI is : </h2>
+            <p class="status">--</p>
+            <div class="measurements">
+                <p>UnderWeight if less than 18.5</p>
+                <p>Normal Weight=18.5-24.9</p>
+                <p>OverWeight=25-29.9</p>
+                <p>Obesity=BMI of 30 or greater</p>
+            </div>
+            <button style="background-color: grey;" onclick="window.location.reload()" >Try Again</button>
+        </div>
+    </div>
+</body>
+<script src="bmi.js"></script>
+</html>
