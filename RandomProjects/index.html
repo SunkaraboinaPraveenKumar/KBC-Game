@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Color</title>
+    <link rel="icon" type="image/x-icon" href="/images/leet.png">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    :root{
+        --color1:#5CE1E6;
+    }
+    body{
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        height:100vh;
+        flex-direction: column;
+        background-color: white;
+    }
+    h1{
+        font-size:40px;
+        font-family: sans-serif;
+        color:yellow;
+        font-weight:400;
+        text-align: center;
+    }
+    p{
+        font-size:20px;
+        margin:2px 0px;
+        color:white;
+        background-color: grey;
+        margin:20px;
+        width:300px;
+        border-radius: 20px;
+        text-align: center;
+        font-family:sans-serif;
+        padding:10px;
+    }
+    .cardsout{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        align-items:center;
+        width:400px;
+        color:#5CE1E6;
+    }
+    .card{
+        width:100px;
+        height:100px;
+        background-color:var(--color1);
+        margin:5px;
+        border-radius:5px;
+        cursor:pointer;
+    }
+    @media (max-width:350px){
+        h1{
+            font-size:25px;
+        }
+        .cardsout{
+            width:250px;
+        }
+        .cards{
+            width:40px;
+            height:40px;
+        }
+        .p{
+            margin:10px 0px;
+        }
+    }
+</style>
+<body>
+    <h1>Guess The Color</h1>
+    <p>RGB(0,0,0)</p>
+    <div class="cardsout">
+        <div class="card" onclick="checkanswer('0')" id="card1"></div>
+        <div class="card" onclick="checkanswer('1')" id="card2"></div>
+        <div class="card" onclick="checkanswer('2')" id="card3"></div>
+        <div class="card" onclick="checkanswer('3')" id="card4"></div>
+        <div class="card" onclick="checkanswer('4')" id="card5"></div>
+        <div class="card" onclick="checkanswer('5')" id="card6"></div>
+        <div class="card" onclick="checkanswer('6')" id="card7"></div>
+        <div class="card" onclick="checkanswer('7')" id="card8"></div>
+        <div class="card" onclick="checkanswer('8')" id="card9"></div>
+    </div>
+   <!-- <div class="container1">
+        <p class="number">22
+            <span>min</span>
+        </p>
+        <p class="number">36
+            <span>sec</span>
+        </p>
+        <p class="number">55
+            <span>ms</span>
+        </p>
+   </div>
+   <div class="container2">
+        <button>Stop</button>
+        <button>Reset</button>
+        <button>Continue</button>
+        <button>Start</button>
+    </div> -->
+    <!-- <div class="clock">
+        <div class="hand hr"></div>
+        <div class="hand min"></div>
+        <div class="hand sec"></div>
+        <div class="num num1">1</div>
+        <div class="num num2">2</div>
+        <div class="num num3">3</div>
+        <div class="num num4">4</div>
+        <div class="num num5">5</div>
+        <div class="num num6">6</div>
+        <div class="num num7">7</div>
+        <div class="num num8">8</div>
+        <div class="num num9">9</div>
+        <div class="num num10">10</div>
+        <div class="num num11">11</div>
+        <div class="num num12">12</div>
+    </div> -->
+    
+</body>
+<script>
+    var cards=document.querySelectorAll(".card");
+    var p=document.querySelector("p");
+    var color=[];
+    var random=Math.floor(Math.random()*9);
+    //console.log(randomColor1,randomColor2,randonColor3);
+    var randomColor=[];
+    for(let i=0;i<cards.length;i++){
+        var randomColor1=Math.floor(Math.random()*256);
+        var randomColor2=Math.floor(Math.random()*256);
+        var randomColor3=Math.floor(Math.random()*256);
+        randomColor.push("rgb("+randomColor1+","+randomColor2+","+randomColor3+")");
+    }
+    for(var i=0;i<cards.length;i++){
+        const randomColorForBackground=randomColor[Math.floor(Math.random()*9)];
+        cards[i].style.backgroundColor=randomColorForBackground;
+        color.push(randomColorForBackground);
+    }
+    //p.textContent=color[Math.floor(Math.random())*9];
+    p.textContent=color[random];
+    //console.log(color);
+    //console.log(randomColor);
+    const checkanswer=(cardIdx)=>{
+        // alert(cardIdx);
+        if(color[cardIdx]==p.textContent){
+            p.style.backgroundColor=color[random];
+            alert("Correct Answer!!");
+        }
+        else{
+            alert("Wrong Answer!!");
+        }
+    }
+</script>
+</html>

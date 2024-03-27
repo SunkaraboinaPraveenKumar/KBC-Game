@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing:border-box;
+    }
+    body{
+        font-family:sans-serif;
+    }
+    .allslides{
+        display:none;
+    }
+    img{
+        vertical-align: middle;
+    }
+    .slideshow-container{
+        max-width:1000px;
+        position:relative;
+        margin:auto;
+    }
+    .prev,.next{
+        cursor:pointer;
+        position:absolute;
+        top:50%;
+        width:auto;
+        padding:16px;
+        margin-top:-22px;
+        color:rgb(255, 255, 255);
+        font-weight:bold;
+        font-size:18px;
+        transition: 0.6s ease;
+        border-radius: 5px;
+        user-select:none;
+        background-color: grey;
+    }
+    .next{
+        right:0px;
+    }
+    .prev{
+        left:0px;
+    }
+    .next:hover,.prev:hover{
+        background-color: blue;
+    }
+    .text{
+        color:black;
+        font-size:13px;
+        padding:8px;
+        position:absolute;
+        bottom:8px;
+        width:100%;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.189);
+    }
+    .numbertext{
+        color:white;
+        position:absolute;
+        padding:10px;
+        font-size:13px;
+    }
+    .dot{
+        cursor:pointer;
+        height:15px;
+        width:15px;
+        margin: 0px 3px;
+        border-radius: 50%;
+        border:none;
+        display: inline-block;
+        background-color:rgba(15, 177, 50, 0.606);
+        transition: background-color 0.6s ease;
+    }
+    .dot.active {
+        background-color: rgba(220, 11, 21, 0.736);
+    }
+    .dot:hover{
+        background-color: aqua;
+    }
+    h1{
+        text-align: center;
+        margin:20px 0px;
+    }
+</style>
+<body>
+    <h1>Banner Slider</h1>
+    <div class="slideshow-container">
+        <div class="allslides fade">
+            <div class="numbertext">1/3</div>
+                <img src="/images/1.png" style="width:100%">
+                <div class="text">Caption Text</div>
+        </div>
+        <div class="allslides fade">
+            <div class="numbertext">2/3</div>
+                <img src="/images/leet.png" style="width:100%">
+                <div class="text">Caption Text</div>
+        </div>
+        <div class="allslides fade">
+            <div class="numbertext">3/3</div>
+                <img src="/images/2.png" style="width:100%">
+                <div class="text">Caption Text</div>
+        </div>
+        <div class="allslides fade">
+            <div class="numbertext">4/3</div>
+                <img src="/images/3.png" style="width:100%">
+                <div class="text">Caption Text</div>
+        </div>
+        <a class="prev" onclick="changeSlides(-1)">&lt;</a>
+        <a class="next" onclick="changeSlides(1)">&gt;</a>
+    </div>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+</body>
+<script>
+    let slides = document.getElementsByClassName("allslides");
+    let dots = document.getElementsByClassName("dot");
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function showSlides(n) {
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].classList.add("active");
+    }
+
+    function changeSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+</script>
+</html>

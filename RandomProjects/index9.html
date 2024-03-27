@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+    }
+    body{
+        width:100%;
+    }
+    .product-carousel-out{
+        display: flex;
+        justify-content: center;
+        width:100%;
+        align-items: center;
+    }
+    .products-carousel{
+        display: flex;
+        overflow-x:scroll;
+        scroll-behavior: smooth;
+        scrollbar-width:none;
+        -ms-overflow-style:none;
+        /* margin:30px;
+        border:1px solid black; */
+        /* align-items: center;
+        justify-content: center;
+        flex-direction: row; */
+        width:100%;
+    }
+    .products-carousel::webkit-scrollbar{
+        display: none;
+    }
+    .product-carousel_item{
+        min-width:300px;
+        min-height:300px;
+        background-color: white;
+        margin:10px; 
+        box-shadow:0px 0px 10px grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+    .btnout{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:30px;
+        height:30px;
+        background-color: white;
+        box-shadow: 0px 0px 10px grey;
+        border-radius: 50%;
+        cursor:pointer;
+        position:absolute;
+        margin:10px;
+    }
+    .btnout:hover{
+        background-color: rgb(0, 204, 255);
+        box-shadow: 0px 0px 10px black;
+    }
+    .product-carousel_item img{
+        width:100%;
+        border-radius: 10px;
+    }
+    #prevbtn{
+        left:0;
+    }
+    #nextbtn{
+        right:0;
+    }
+</style>
+<body>
+    <h1>My Products</h1>
+    <div class="product-carousel-out">
+        <div class="btnout" id="prevbtn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
+            onclick="prevbtnFunction()" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg> 
+        </div>
+        <div class="btnout" id="nextbtn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
+            onclick="nextbtnFunction()"  stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>              
+        </div>
+        <div class="products-carousel">
+            <!-- <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div>
+            <div class="product-carousel_item">
+                <img src="https://picsum.photos/300/300" alt="noimg">
+                <h3>Product 1</h3>
+                <p>Price:Rs.100</p>
+            </div> -->
+        </div>
+    </div>
+</body>
+<script>
+    let products=[
+                {
+                    id:1,
+                    name:"Product 1",
+                    price:100,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:2,
+                    name:"Product 2",
+                    price:200,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:3,
+                    name:"Product 3",
+                    price:300,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:4,
+                    name:"Product 4",
+                    price:400,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:5,
+                    name:"Product 5",
+                    price:500,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:6,
+                    name:"Product 6",
+                    price:600,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:7,
+                    name:"Product 7",
+                    price:700,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:8,
+                    name:"Product 8",
+                    price:800,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:9,
+                    name:"Product 9",
+                    price:900,
+                    img:"https://picsum.photos/300/300"
+                },
+                {
+                    id:10,
+                    name:"Product 10",
+                    price:1000,
+                    img:"https://picsum.photos/300/300"
+                }
+                ];
+    const productCarousel=document.querySelector(".products-carousel");
+    const showProducts=()=>{
+        let output="";
+        products.forEach(({id,name,price,img})=>{
+            output+=`
+            <div class="product-carousel_item">
+                <img src=${img} alt="noimg">
+                <h3>${name}</h3>
+                <p>Price: Rs. ${price}</p>
+            </div>`
+        });
+        productCarousel.innerHTML=output;
+    }
+    showProducts();
+    const productCarouselWidth=productCarousel.offsetWidth;
+    //const productCarouselItem=document.querySelector(".product-carousel_item");
+    //const productCarouselItemWidth=productCarouselItem.offsetWidth;
+    //const allProductsCarouselItems=document.querySelectorAll(".product-carousel_item");
+    //const totalProductCarouselItem=allProductsCarouselItems.length;
+    //const totalProductCarouselWidth=productCarouselItemWidth*totalProductCarouselItem;
+
+    const nextbtnFunction=()=>{
+        productCarousel.scrollLeft+=productCarouselWidth;
+    }
+    const prevbtnFunction=()=>{
+        productCarousel.scrollLeft-=productCarouselWidth;
+    }
+    const autoscroller=()=>{
+        productCarousel.scrollLeft+=productCarouselWidth;
+    }
+    //setInterval(autoscroller,1000);
+</script>
+</html>

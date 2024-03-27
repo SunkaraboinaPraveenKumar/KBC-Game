@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        background-color: grey;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        height:125vh;
+        flex-direction: column;
+    }
+    h1{
+        color:white;
+        font-size:40px;
+        margin-bottom:20px;
+        font-family: sans-serif;
+        font-weight: 400;
+    }
+    form{
+        width:80%;
+        background-color: white;
+        padding:20px;
+        border-radius: 15px;
+        margin-top:10px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .form-cont{
+        display:flex;
+        padding:5px;
+        margin-bottom:10px;
+        width:100%;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    label{
+        background-color: grey;
+        padding:5px 10px;
+        border-radius: 20px;
+        font-family: sans-serif;
+        font-size:15px;
+        margin-right:10px;
+        width:35%;
+        display:flex;
+        justify-content: space-between;
+    }
+    #reqd{
+        color:red;
+    }
+    .form-cont input{
+        background-color: white;
+        border:0.6px solid black;
+        outline:none;
+        color:black;
+        width:70%;
+        font-size:16px;
+        border-radius: 8px;;
+    }
+    select{
+        background-color: rgba(149, 187, 221, 0.941);
+        border:none;
+        color:black;
+        width:70%;
+        border-radius: 8px;
+        outline:none;
+        font-size: 16px;
+    }
+    .form-cont1{
+        display:flex;
+        padding:5px;
+        margin-top:10px;
+        width:95%;
+        border-radius: 20px;
+        overflow: hidden;
+        flex-direction: column;
+    }
+    .form-cont1 #address{
+        margin-top:10px;
+        height:50px;
+        text-align: left;
+        width:100%;
+    }
+    #submitbtn{
+        background-color: grey;
+        border:none;
+        color:black;
+        padding:10px 20px;
+        border-radius: 20px;
+        font-size:20px;
+        margin-top:20px;
+        cursor:pointer;
+    }
+    #submitbtn:hover{
+        background-color: grey;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.669);
+    }
+    .form-cont2{
+        display:flex;
+        padding:5px;
+        margin-top:10px;
+        width:95%;
+        border-radius: 20px;
+        overflow: hidden;
+        flex-direction: row;
+    }
+    .form-cont2 label{
+        height:20px;
+    }
+    .dobin{
+        display:flex;
+        width:70%;
+        justify-content:space-between;
+    }
+    .dob input{
+        background-color: white;
+        color:black;
+        outline: none;
+        font-size:16px;
+        width:25%;
+        height: 5px;
+    }
+    .err{
+        color:red;
+        font-size:12px;
+        width:95%;
+        margin:5px 5px;
+        margin-left:70%;
+        display:none;
+    }
+</style>
+<body>
+    <h1>Registration Form Validation</h1>
+    <form>
+        <div class="form-cont">
+            <label for="first-name">First Name: <span id="reqd"></span></label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter Your First Name" required>
+        </div>
+        <p class="err" id="firstnameerr">Please Enter a valid First Name</p>
+        <div class="form-cont">
+            <label for="last-name">Last Name: <span id="reqd"></span></label>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter Your Last Name" required>
+        </div>
+        <div class="form-cont">
+            <label for="email">Email: <span id="reqd"></span></label>
+            <input type="text" id="email" name="email" placeholder="Enter Your Email" required>
+        </div>
+        <p class="err" id="mailerr">Please Enter a valid Email</p>
+        <div class="form-cont2">
+            <label>DOB: <span id="reqd"></span></label>
+            <div class="dobin">
+                <input  type="number" id="day" placeholder="DD" min="1" max="31">
+                <div class="vr">-</div>
+                <input  type="number" id="month" placeholder="MM" min="1" max="12">
+                <div class="vr">-</div>
+                <input type="number" id="year" placeholder="YYYY" min="1990" max="2024">
+            </div>
+        </div>
+        <p class="err" id="doberr">Please Enter a valid DOB</p>
+        <div class="form-cont">
+            <label for="phNo">Phone: <span id="reqd"></span></label>
+            <input type="number" id="phNo" name="phNo" placeholder="Enter Your Phone Number" maxlength="10">
+        </div>
+        <p class="err" id="phoneerr">Please Enter a valid Phone Number</p>
+        <div class="form-cont">
+            <label for="password">PassWord: <span id="reqd"></span></label>
+            <input type="password" id="password" name="password" placeholder="Enter Your PassWord">
+        </div>
+        <p class="err" id="passworderr" >Please Enter a valid Password of length 10</p>
+        <div class="form-cont">
+            <label for="confirmpassword">PassWord: <span id="reqd"></span></label>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="ReEnter Your PassWord">
+        </div>
+        <p class="err" id="confirmpassworderr">Please match the confirm password with password</p>
+        <div class="form-cont">
+            <label for="country">Country: <span id="reqd"></span></label>
+            <select id="country" name="country">
+                <option value="Select">Select A Country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="China">China</option>
+                <option value="Russia">Russia</option>
+                <option value="UK">UK</option>
+                <option value="Japan">Japan</option>
+            </select>
+        </div>
+        <p class="err" id="countryerr">Please Select a Country</p>
+        <div class="form-cont1">
+            <label for="address">Address: </label>
+            <input type="textarea" id="address" name="address" placeholder="Enter Your Address">
+        </div>
+        <input type="submit"  value="Submit" id="submitbtn"  onclick="handleformdata(event)">
+    </form>
+</body>
+<script>
+    const handleformdata = (e) => {
+        e.preventDefault();
+        let firstname = document.getElementById("first-name").value;
+        let email = document.getElementById("email").value;
+        let day = document.getElementById("day").value;
+        let month = document.getElementById("month").value;
+        let year = document.getElementById("year").value;
+        let phone = document.getElementById("phNo").value;
+        let password = document.getElementById("password").value;
+        let confirmpassword = document.getElementById("confirmpassword").value;
+        let country = document.getElementById("country").value;
+        let address = document.getElementById("address").value;
+        
+        let firstnameerr = document.getElementById("firstnameerr");
+        let emailerr = document.getElementById("mailerr");
+        let doberr = document.getElementById("doberr");
+        let phoneerr = document.getElementById("phoneerr");
+        let passworderr = document.getElementById("passworderr");
+        let confirmpassworderr = document.getElementById("confirmpassworderr");
+        let countryerr = document.getElementById("countryerr");
+        
+        let iserror=false;
+        if (firstname.length < 1) {
+            firstnameerr.innerText = "First name cannot be Empty";
+            firstnameerr.style.display = "block";
+            iserror=true;
+        } else {
+            firstnameerr.style.display = "none";
+        }
+        if (email.length < 1) {
+            emailerr.innerText = "Email is Required";
+            emailerr.style.display = "block";
+            iserror=true;
+        } else {
+            emailerr.style.display = "none";
+        }    
+        if (day==""||month==""||year=="") {
+            //doberr.innerText = "DOB cannot be Empty";
+            doberr.style.display = "block";
+            iserror=true;
+        } else {
+            doberr.style.display = "none";
+        } 
+        if (phone.length<10||phone.length>10||phone==""){
+            phoneerr.innerText = "Phone number not valid";
+            phoneerr.style.display = "block";
+            iserror=true;
+        } else {
+            phoneerr.style.display = "none";
+        }
+        if (password.length < 6) {
+            passworderr.innerText = "Password must be of atleast 6 characters";
+            passworderr.style.display = "block";
+            iserror=true;
+        } else {
+            passworderr.style.display = "none";
+        }
+        if (confirmpassword!=password) {
+            confirmpassworderr.innerText = "ConfirmPassword must match";
+            confirmpassworderr.style.display = "block";
+            iserror=true;
+        } else {
+            confirmpassworderr.style.display = "none";
+        }
+        if (country=="") {
+            countryerr.innerText = "Please select a country";
+            countryerr.style.display = "block";
+            iserror=true;
+        }
+        else {
+            countryerr.style.display = "none";
+        }
+        if(iserror){
+            return;
+        }
+        else{
+            firstnameerr.style.display="none";
+            emailerr.style.display="none";
+            doberr.style.display="none";
+            phoneerr.style.display="none";
+            passworderr.style.display="none";
+            confirmpassworderr.style.display="none";
+            countryerr.style.display="none";
+            let data={
+                firstname,
+                email,
+                day,
+                month,
+                year,
+                phone,
+                password,
+                confirmpassword,
+                country,
+                address   
+            }
+            alert("Form Submitted Sucessfully");
+            console.log(data);
+        }
+    }
+</script>
+
+</html>

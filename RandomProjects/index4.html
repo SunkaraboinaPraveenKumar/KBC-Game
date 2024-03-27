@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        background-color: #51ff99;
+        width:100vw;
+        height:100vh;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    h1{
+        font-size:3rem;
+        background-color: rgba(0, 0, 255, 0.338);
+        font-weight:500;
+        text-transform:uppercase;
+        letter-spacing:1px;
+    }
+    input{
+        width:300px;
+        height:50px;
+        border:none;
+        outline:none;
+        border-radius:5px;
+        padding:0px 10px;
+        font-size:1.2rem;
+        margin-top:10px;
+    }
+    button{
+        width:150px;
+        height:25px;
+        border:none;
+        margin-top:20px;
+        padding:5px;
+        border-radius:20px;
+        background-color: rgba(128, 128, 128, 0.412);
+        cursor:pointer;
+    }
+    button:hover{
+        background-color: rgba(128, 128, 128, 0.868);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.311);
+    }
+    #result{
+        background-color: white;
+        width:300px;
+        border-radius: 10px;
+        margin:20px;
+        text-align: center;
+        font-size:1.2rem;
+        /* display:none; */
+    }
+</style>
+<body>
+    <h1>Palindrome Checker</h1>
+    <p id="result"></p>
+    <input type="text" id="palindromeInput" placeholder="Enter a Word">
+    <button id="btn" onclick="checkPalindrome()">Check</button>
+</body>
+<script>
+    function checkPalindrome(){
+        const palinInput=document.getElementById("palindromeInput").value;
+        if(palinInput.length===0){
+            alert("Input should not be Empty!!")
+        }
+        const res=document.getElementById("result");
+        const reverse=palinInput.split("").reverse().join('');
+        if(reverse.toLowerCase()==palinInput.toLowerCase()){
+            res.textContent=`${palinInput} is a Palindrome!`;
+        }
+        else{
+            res.textContent=`${palinInput} is not a Palindrome!!`;
+        }
+    }
+</script>
+</html>
