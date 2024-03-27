@@ -1,0 +1,181 @@
+:root {
+    --col1: #391D6F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.gamecontainer {
+    width: 100%;
+    height: 160vh;
+    background-color: #391D6F;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid white;
+    justify-content: center;
+}
+
+.question-cont {
+    width: 100%;
+    /* background-color: aliceblue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hr {
+    width: 50%;
+    height: 3px;
+    background-color: white;
+}
+
+.question-cont p {
+    color: white;
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid white;
+    padding: 10px 20px;
+}
+
+.answer-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer-cont .answer-in {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.answer-cont .answer-in p {
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid white;
+    padding: 10px 20px;
+}
+
+.answer-cont .answer-in p span {
+    color: gold;
+}
+
+.answer-cont .answer-in p:hover {
+    background-color: white;
+    color: var(--col1);
+    cursor: pointer;
+}
+
+/* Right Section */
+.right {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.progress {
+    width: 70%;
+    /* background-color: white; */
+    align-self: center;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.progressin {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 20px;
+    /* background-color: aqua; */
+    margin: 5px 0px;
+    font-size: 15px;
+    color: white;
+}
+
+.progressin1 {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 20px;
+    /* background-color: aqua; */
+    margin: 5px 0px;
+    font-size: 15px;
+    color: gold;
+}
+
+.progressin:hover,
+.progressin1:hover,
+.progress .active {
+    background-color: gold;
+    color: black;
+    cursor: pointer;
+}
+
+.hr1 {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+}
+
+.lifelines {
+    display: flex;
+    width: 100%;
+    height: 40%;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.lifelinein {
+    width: 25%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.lifelinein img {
+    width: 50%;
+    margin: 0px 20px;
+    object-fit: contain;
+}
+
+.lifelinein:hover {
+    box-shadow: 0px 0px 5px white;
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.timer{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+.timer p{
+    color:gold;
+    font-size:35px;
+}
