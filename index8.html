@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealTime Search Bar</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+    body{
+        background-color: black;
+        width:100%;
+        min-height:100vh;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .container{
+        width:100%;
+        max-width:500px;
+        border:1px solid white;
+        border-radius:20px;
+        height:500px;
+        overflow:hidden;
+    }
+    .searchBar{
+        width:100%;
+        background-color: white;
+        border-radius: 50px;
+        padding:5px 20px;
+    }
+    .searchBar input{
+        width:100%;
+        border:none;
+        padding: 5px 10px;
+        font-size:17px;
+        outline:none;
+    }
+    .result{
+        height:100%;
+        overflow-y:scroll;
+        display:block; /* Change to "block" */
+    }
+    .card{
+        display:flex;
+        color:white;
+        font-family: 'Times New Roman', Times, serif;
+        justify-content: space-between;
+        align-items: center;
+        padding:10px;
+        border-bottom:1px solid white;
+        width:100%;
+    }
+    #nomatches{
+        color:white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        margin:100px;
+        display:none; /* Initially hide */
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="searchBar">
+            <input type="text" placeholder="Search" id="searchinput">
+        </div>
+        <div class="result">
+            <p id="nomatches">No data Found</p>
+            <!-- <div class="card">
+                <div class="card-header">
+                    <h3>John Doe</h3>
+                    <h4>john123@gmail.com</h4>
+                </div>
+                <div class="card-body">
+                    <p>Age: 30</p>
+                    <p>Location: New York</p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</body>
+<script>
+    const data = [
+
+        {
+            "id": 1,
+            "name": "John Doe",
+            "email": "johndoe@example.com",
+            "age": '30',
+            "location": "New York"
+        },
+        {
+            "id": 2,
+            "name": "Jane Doe",
+            "email": "janedoe@example.com",
+            "age": '25',
+            "location": "London"
+        },
+        {
+            "id": 3,
+            "name": "James Smith",
+            "email": "jamessmith@example.com",
+            "age": '35',
+            "location": "Paris"
+        },
+        {
+            "id": 4,
+            "name": "Mary Williams",
+            "email": "marrywilliams@gmailc.om",
+            "age": '30',
+            "location": "New York"
+        },
+        {
+            "id": 5,
+            "name": "Michael Johnson",
+            "email": "michaeljohnson@example.com",
+            "age": '40',
+            "location": "Berlin"
+        },
+        {
+            "id": 6,
+            "name": "William Brown",
+            "email": "williambrown@example.com",
+            "age": '45',
+            "location": "Tokyo"
+        },
+        {
+            "id": 7,
+            "name": "David Davis",
+            "email": "daviddavis@example.com",
+            "age": '50',
+            "location": "Sydney"
+        },
+        {
+            "id": 8,
+            "name": "Richard Miller",
+            "email": "richardmiller@example.com",
+            "age": '55',
+            "location": "Shanghai"
+        },
+        {
+            "id": 9,
+            "name": "Charles Moore",
+            "email": "charlesmoore@example.com",
+            "age": '60',
+            "location": "Beijing"
+        },
+        {
+            "id": 10,
+            "name": "Joseph Wilson",
+            "email": "josephwilson@example.com",
+            "age": '65',
+            "location": "Moscow"
+        },
+        {
+            "id": 11,
+            "name": "Thomas Harris",
+            "email": "thomasharris@example.com",
+            "age": '70',
+            "location": "Rome"
+        },
+        {
+            "id": 12,
+            "name": "Christopher Young",
+            "email": "christopheyoung@example.com",
+            "age": '75',
+            "location": "Madrid"
+        },
+        {
+            "id": 13,
+            "name": "Daniel King",
+            "email": "danielking@example.com",
+            "age": '80',
+            "location": "Amsterdam"
+        },
+        {
+            "id": 14,
+            "name": "Matthew Wright",
+            "email": "matthewwright@example.com",
+            "age": '85',
+            "location": "Dubai"
+        },
+        {
+            "id": 15,
+            "name": "Anthony Lee",
+            "email": "anthonylee@example.com",
+            "age": '90',
+            "location": "Toronto"
+        },
+
+    ]
+    const search = document.querySelector('#searchinput');
+    const result = document.querySelector(".result");
+    const nomatches = document.getElementById("nomatches");
+
+    const searchItem = () => {
+        let searchValue = search.value.trim().toLowerCase();
+        let newdata = [];
+
+        if (searchValue.length > 0) {
+            newdata = data.filter((item) => {
+                return item.name.toLowerCase().includes(searchValue)
+                    || item.email.toLowerCase().includes(searchValue)
+                    || item.age.includes(searchValue)
+                    || item.location.includes(searchValue);
+            });
+        }
+
+        showData(newdata);
+    }
+
+    const showData = (newdata) => {
+        let html = "";
+
+        if (newdata.length == 0) {
+            nomatches.style.display = "block"; // Display "No data Found" message
+            //result.createElement(`<p>Data not Found</p>`);
+        } 
+        else if(newdata.length>0){
+            nomatches.style.display = "none"; // Hide "No data Found" message
+
+            newdata.forEach((item) => {
+                html +=
+                    `<div class="card">
+                        <div class="card-header">
+                            <h3>${item.name}</h3>
+                            <h4>${item.email}</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>${item.age}</p>
+                            <p>${item.location}</p>
+                        </div>
+                    </div>`;
+            });
+            result.innerHTML = html;
+        }
+        else{
+            result.innerHTML=`<p id="nomatches">Data Not Found</p>`
+            nomatches.style.display="block";
+        }
+    }
+
+    search.addEventListener('keyup', searchItem);
+</script>
+</html>
